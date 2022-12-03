@@ -67,7 +67,7 @@ struct pcb_t {
 	uint32_t pc; // Program pointer, point to the next instruction
 	struct page_table_t * page_table; // Page table
 	uint32_t bp;	// Break pointer
-	uint32_t prio;
+	uint32_t prio; 
 };
 
 #endif
