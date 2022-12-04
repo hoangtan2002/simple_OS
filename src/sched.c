@@ -55,7 +55,7 @@ struct pcb_t * get_mlq_proc(void) {
 		if(!empty(&mlq_ready_queue[i])) break;
 	}
 	if(i<MAX_PRIO){
-		proc = dequeue(&mlq_ready_queue);
+		proc = dequeue(&mlq_ready_queue[i]);
 	}
 	pthread_mutex_unlock(&queue_lock);
 	return proc;	

@@ -30,8 +30,14 @@ struct pcb_t * dequeue(struct queue_t * q) {
 	/* TODO: return a pcb whose prioprity is the highest
 	 * in the queue [q] and remember to remove it from q
 	 * */
-	if(q->size == 0) return NULL;
-	struct pcb_t* to_return = q->proc[--q->size];
+	// if(q->size == 0) return NULL;
+	// struct pcb_t* to_return = q->proc[--q->size];
+	// return to_return;
+
+	struct pcb_t* to_return = NULL;
+	if(q->size!=0){
+		to_return = q->proc[--q->size];
+	}
 	return to_return;
 }
 
