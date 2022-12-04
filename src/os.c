@@ -3,7 +3,7 @@
 #include "timer.h"
 #include "sched.h"
 #include "loader.h"
-
+#include "mem.h"
 #include <pthread.h>
 #include <stdio.h>
 #include <string.h>
@@ -109,6 +109,7 @@ static void * ld_routine(void * args) {
 
 static void read_config(const char * path) {
 	FILE * file;
+	char proc[100];
 	if ((file = fopen(path, "r")) == NULL) {
 		printf("Cannot find configure file at %s\n", path);
 		exit(1);
@@ -126,13 +127,13 @@ static void read_config(const char * path) {
 		ld_processes.path[i] = (char*)malloc(sizeof(char) * 100);
 		ld_processes.path[i][0] = '\0';
 		strcat(ld_processes.path[i], "input/proc/");
-		char proc[100];
 #ifdef MLQ_SCHED
 		fscanf(file, "%lu %s %lu\n", &ld_processes.start_time[i], proc, &ld_processes.prio[i]);
 #else
 		fscanf(file, "%lu %s\n", &ld_processes.start_time[i], proc);
 #endif
 		strcat(ld_processes.path[i], proc);
+		//roc[0] = '\0';
 	}
 }
 
