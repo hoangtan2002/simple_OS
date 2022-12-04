@@ -49,6 +49,7 @@
 .history
 .ionide
 input/*
+output/*
 obj/*
 mem
 os
